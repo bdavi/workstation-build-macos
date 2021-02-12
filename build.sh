@@ -43,16 +43,19 @@ brew install coreutils curl git
 # Install asdf directly and NOT WITH HOMEBREW. It messes with the node keychain and I can't fix it :)
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 
+# Ruby
 asdf plugin-add ruby
 asdf install ruby latest
 asdf global ruby $(asdf latest ruby)
 gem install bundler
 
+# Python
 asdf plugin-add python
 asdf install python 2.7.17
 asdf install python latest
 asdf global python $(asdf latest python) 2.7.17
 
+# Nodejs
 brew install gpg coreutils
 asdf plugin-add nodejs
 bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
@@ -63,6 +66,17 @@ asdf global nodejs $(asdf latest nodejs)
 asdf plugin-add yarn
 asdf install yarn latest
 asdf global yarn $(asdf latest yarn)
+
+# Erlang
+brew install autoconf
+asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf install erlang latest
+asdf global erlang $(asdf latest erlang)
+
+# Elixir
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+asdf install elixir latest
+asdf global elixir $(asdf latest elixir)
 
 
 ###################################################################################################
